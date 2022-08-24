@@ -9,18 +9,22 @@ namespace tictactoe_cli.Models
 {
     class Player : IPlayer
     {
+        private static int _playerCounter = 0;
         public string Name { get; set; }
         public Bitmap Avatar { get; set; }
-        public char Symbol { get; set; }
+        public string Symbol { get; set; }
 
         public Player()
         {
+            _playerCounter++;
             Name = NameFromInput();
-            Avatar = AvatarFromInput();
+            Avatar = AvatarFromList();
         }
 
         private static string NameFromInput()
         {
+            Console.Clear();
+            Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
             Console.WriteLine("Enter your name or leave empty to get a random name:");
             string input = Console.ReadLine();
 
@@ -28,8 +32,11 @@ namespace tictactoe_cli.Models
             {
                 input = NameFromList();
             }
+            Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop - 1);
+            Console.WriteLine("Your name is: {0}.", input);
 
-            Console.WriteLine("Your name is {0}.", input);
+            Console.ReadLine();
+            //Console.Clear();
             return input;
         }
 
@@ -69,16 +76,52 @@ namespace tictactoe_cli.Models
 
         private static Bitmap AvatarFromInput()
         {
+            string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
+            
             List<Bitmap> bitmapList = new List<Bitmap>();
-            foreach (var image in Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images")))
+            foreach (string image in imageStorage)
             {
                 bitmapList.Add(new Bitmap(image));
             }
             bitmapList.TrimExcess();
 
+            //foreach (Bitmap image in bitmapList)
+            //{
+            //    image.ToGrayscaleArray();
+            //}
+
+            Console.WriteLine("Choose an avatar by typing its number:");
+
+            foreach (Bitmap image in bitmapList)
+            {
+                image.ToAsciiWhiteForeground();
+            }
+
             return bitmapList.ToArray()[0];
 
             // Console.WriteLine("Enter the number of your avatar or leave empty to get a random avatar:");
+        }
+
+        private static Bitmap AvatarFromList()
+        {
+            Console.Clear();
+            string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
+
+            List<Bitmap> bitmapList = new List<Bitmap>();
+            foreach (string image in imageStorage)
+            {
+                bitmapList.Add(new Bitmap(image));
+            }
+            bitmapList.TrimExcess();
+
+            //Console.Clear();
+            Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
+            Console.Write("Your avatar is:\t\t\t");
+
+            bitmapList.ToArray()[0].ToAsciiWhiteForegroundSetup();
+
+            Console.ReadLine();
+            return bitmapList.ToArray()[0];
         }
     }
 }

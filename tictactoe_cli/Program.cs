@@ -18,12 +18,12 @@ namespace tictactoe_cli
             //Console.WriteLine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName);
             //Console.WriteLine(Path.Combine("..", "..", "..", "Data", "name.txt"));
 
-            Player player_1 = new Player();
+            //foreach (var image in Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images")))
+            //{
+            //    Console.WriteLine(image);
+            //}
 
-            foreach (var image in Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images")))
-            {
-                Console.WriteLine(image);
-            }
+            Game ticTacToe = new Game();
 
             Console.ReadKey();
         }

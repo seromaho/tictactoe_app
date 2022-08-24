@@ -9,7 +9,7 @@ namespace tictactoe_cli.Models
     {
         public string Name { get; set; }
         public Bitmap Avatar { get; set; }
-        public char Symbol { get; set; }
+        public string Symbol { get; set; }
 
     }
 }
