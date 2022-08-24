@@ -19,9 +19,11 @@ namespace tictactoe_cli.Models
         public IPlayer player_1 { get; set; }
         public IPlayer player_2 { get; set; }
 
+        public abstract void DisplayGameBoard();
         public abstract void DisplayGameStatus();
-        public abstract bool GameIsDraw();
-        public abstract bool GameIsWon();
+        public abstract string TakeAction(IPlayer player);
+        public abstract void GameIsDraw();
+        public abstract void GameIsWon();
         public abstract void WriteGameLog();
     }
 }

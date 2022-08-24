@@ -35,14 +35,8 @@ namespace tictactoe_cli.Models
             player_2 = new Player();
         }
 
-        public void DisplayGameStatus()
+        public void DisplayGameBoard()
         {
-            Console.Clear();
-
-            Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
-            int initialLeft = Console.CursorLeft;
-            int initialTop = Console.CursorTop;
-
             Console.WriteLine("+---------+---------+---------+---------+---------+");
             Console.WriteLine("|         |         |         |         |         |");
             Console.WriteLine("|         |    A    |    B    |    C    |         |");
@@ -64,6 +58,17 @@ namespace tictactoe_cli.Models
             Console.WriteLine("|         |    A    |    B    |    C    |         |");
             Console.WriteLine("|         |         |         |         |         |");
             Console.WriteLine("+---------+---------+---------+---------+---------+");
+        }
+
+        public void DisplayGameStatus()
+        {
+            Console.Clear();
+
+            Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
+            int initialLeft = Console.CursorLeft;
+            int initialTop = Console.CursorTop;
+
+            DisplayGameBoard();
 
             //int currentLeft = Console.CursorLeft;
             int currentTop = Console.CursorTop;
@@ -88,11 +93,9 @@ namespace tictactoe_cli.Models
             Console.Write(C3[0]);
 
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, currentTop + 1);
-
-            Play(player_1);
         }
 
-        public string Play(IPlayer player)
+        public string TakeAction(IPlayer player)
         {
             Console.CursorVisible = true;
 
@@ -175,17 +178,24 @@ namespace tictactoe_cli.Models
             return fieldName;
         }
 
+        public void GameIsDraw()
+        {
+            if (string.IsNullOrWhiteSpace(A1[0]) || string.IsNullOrWhiteSpace(A2[0]) || string.IsNullOrWhiteSpace(A3[0]) || string.IsNullOrWhiteSpace(B1[0]) || string.IsNullOrWhiteSpace(B2[0]) || string.IsNullOrWhiteSpace(B3[0]) || string.IsNullOrWhiteSpace(C1[0]) || string.IsNullOrWhiteSpace(C2[0]) || string.IsNullOrWhiteSpace(C3[0]))
+            {
+                GameIsOver = false;
+            }
+            else
+            {
+                GameIsOver = true;
+            }
+        }
+
+        public void GameIsWon()
+        {
+            throw new NotImplementedException();
+        }
+
         public void WriteGameLog()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool GameIsDraw()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool GameIsWon()
         {
             throw new NotImplementedException();
         }

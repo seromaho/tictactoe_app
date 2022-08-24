@@ -32,9 +32,18 @@ namespace tictactoe_cli
             while (!ticTacToe.GameIsOver)
             {
                 ticTacToe.DisplayGameStatus();
-            }
 
-            Console.ReadKey();
+                ticTacToe.TakeAction(ticTacToe.player_1);
+
+                if (ticTacToe.GameIsOver)
+                {
+                    break;
+                }
+
+                ticTacToe.DisplayGameStatus();
+
+                ticTacToe.TakeAction(ticTacToe.player_2);
+            }
         }
     }
 }
