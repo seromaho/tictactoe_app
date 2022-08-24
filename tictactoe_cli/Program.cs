@@ -9,6 +9,10 @@ namespace tictactoe_cli
     {
         static void Main(string[] args)
         {
+            //Console.Write(Console.CursorLeft);
+            //Console.Write(Console.CursorTop);
+            //Console.ReadKey();
+
             //Console.WriteLine(Directory.GetCurrentDirectory());
             //foreach (string item in Directory.GetDirectories(Directory.GetCurrentDirectory()))
             //{
@@ -24,6 +28,11 @@ namespace tictactoe_cli
             //}
 
             Game ticTacToe = new Game();
+
+            while (!ticTacToe.GameIsOver)
+            {
+                ticTacToe.DisplayGameStatus();
+            }
 
             Console.ReadKey();
         }

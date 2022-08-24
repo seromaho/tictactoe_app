@@ -18,6 +18,7 @@ namespace tictactoe_cli.Models
         {
             _playerCounter++;
             Name = NameFromInput();
+            Symbol = SymbolFromList();
             Avatar = AvatarFromList();
         }
 
@@ -72,6 +73,22 @@ namespace tictactoe_cli.Models
 
             Random RNG = new Random();
             return nameArray[RNG.Next(0, nameArray.Length)].CapitalizeFirstLetter();
+        }
+
+        private static string SymbolFromList()
+        {
+            string symbol = string.Empty;
+
+            if (_playerCounter % 2 == 0)
+            {
+                symbol = "O";
+            }
+            else
+            {
+                symbol = "X";
+            }
+
+            return symbol;
         }
 
         private static Bitmap AvatarFromInput()
