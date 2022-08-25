@@ -15,23 +15,23 @@ namespace tictactoe_cli
             {
                 while (true)
                 {
-                    ticTacToe.DisplayGameStatus(ticTacToe.player_2);
+                    ticTacToe.DisplayGameStatus(ticTacToe.Player_2);
 
                     if (ticTacToe.GameIsOver)
                     {
                         break;
                     }
 
-                    ticTacToe.TakeAction(ticTacToe.player_1);
+                    ticTacToe.TakeAction(ticTacToe.Player_1);
 
-                    ticTacToe.DisplayGameStatus(ticTacToe.player_1);
+                    ticTacToe.DisplayGameStatus(ticTacToe.Player_1);
 
                     if (ticTacToe.GameIsOver)
                     {
                         break;
                     }
 
-                    ticTacToe.TakeAction(ticTacToe.player_2);
+                    ticTacToe.TakeAction(ticTacToe.Player_2);
                 }
 
                 ticTacToe.DisplayGameStatus();

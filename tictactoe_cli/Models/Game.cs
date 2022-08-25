@@ -16,8 +16,8 @@ namespace tictactoe_cli.Models
         public string[] B3 { get; set; }
         public string[] C3 { get; set; }
         public bool GameIsOver { get; set; }
-        public IPlayer player_1 { get; set; }
-        public IPlayer player_2 { get; set; }
+        public IPlayer Player_1 { get; set; }
+        public IPlayer Player_2 { get; set; }
 
         public Game()
         {
@@ -31,8 +31,8 @@ namespace tictactoe_cli.Models
             B3 = new string[3] { " ", "25", "14" };
             C3 = new string[3] { " ", "35", "14" };
             GameIsOver = false;
-            player_1 = new Player();
-            player_2 = new Player();
+            Player_1 = new Player();
+            Player_2 = new Player();
         }
 
         public void DisplayGameBoard()
@@ -68,7 +68,7 @@ namespace tictactoe_cli.Models
             Console.CursorVisible = false;
 
             Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
-            DisplayPlayerScore(player_1, player_2);
+            DisplayPlayerScore(Player_1, Player_2);
 
             int initialLeft = Console.CursorLeft;
             int initialTop = Console.CursorTop;
@@ -106,7 +106,7 @@ namespace tictactoe_cli.Models
             Console.CursorVisible = false;
 
             Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
-            DisplayPlayerScore(player_1, player_2);
+            DisplayPlayerScore(Player_1, Player_2);
 
             int initialLeft = Console.CursorLeft;
             int initialTop = Console.CursorTop;

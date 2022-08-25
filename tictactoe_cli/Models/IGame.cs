@@ -16,8 +16,8 @@ namespace tictactoe_cli.Models
         public string[] B3 { get; set; }
         public string[] C3 { get; set; }
         public bool GameIsOver { get; set; }
-        public IPlayer player_1 { get; set; }
-        public IPlayer player_2 { get; set; }
+        public IPlayer Player_1 { get; set; }
+        public IPlayer Player_2 { get; set; }
 
         public abstract void DisplayGameBoard();
         public abstract void DisplayGameStatus();
