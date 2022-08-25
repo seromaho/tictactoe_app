@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Extensions;
+using System;
 
 namespace tictactoe_cli.Models
 {
@@ -21,6 +20,8 @@ namespace tictactoe_cli.Models
 
         public Game()
         {
+            //Console_Extensions.Ladebalken();
+
             A1 = new string[3] { " ", "15", "6" };
             B1 = new string[3] { " ", "25", "6" };
             C1 = new string[3] { " ", "35", "6" };
@@ -148,7 +149,7 @@ namespace tictactoe_cli.Models
             Console.WriteLine("{0} - {1}", player_1.Name, player_1.NumGamesWon);
             Console.SetCursorPosition(cursorLeft, cursorTop + 1);
             Console.WriteLine("{0} - {1}", player_2.Name, player_2.NumGamesWon);
-            Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop + 2);
+            Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop + 1);
         }
 
         public void ResetGameBoard()

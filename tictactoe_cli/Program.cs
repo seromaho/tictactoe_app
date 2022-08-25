@@ -1,6 +1,5 @@
 ﻿using Extensions;
 using System;
-using System.IO;
 using tictactoe_cli.Models;
 
 namespace tictactoe_cli
@@ -9,6 +8,8 @@ namespace tictactoe_cli
     {
         static void Main(string[] args)
         {
+            Console_Extensions.halfScreenSizedWindow();
+
             Game ticTacToe = new Game();
 
             while (true)

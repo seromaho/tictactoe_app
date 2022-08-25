@@ -1,9 +1,7 @@
 ﻿using Extensions;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Text;
 
 namespace tictactoe_cli.Models
 {
@@ -24,6 +22,8 @@ namespace tictactoe_cli.Models
             //Avatar = AvatarFromList();
             NumGamesWon = 0;
             NumGamesLost = 0;
+
+            Console_Extensions.Ladebalken();
         }
 
         private static string NameFromInput()
@@ -42,7 +42,6 @@ namespace tictactoe_cli.Models
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop - 1);
             Console.WriteLine("Your name is: {0}.", input);
 
-            Console.ReadKey();
             return input;
         }
 
