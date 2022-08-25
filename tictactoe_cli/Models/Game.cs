@@ -37,6 +37,8 @@ namespace tictactoe_cli.Models
 
         public void DisplayGameBoard()
         {
+            Console.CursorVisible = false;
+
             Console.WriteLine("+---------+---------+---------+---------+---------+");
             Console.WriteLine("|         |         |         |         |         |");
             Console.WriteLine("|         |    A    |    B    |    C    |         |");
@@ -60,9 +62,10 @@ namespace tictactoe_cli.Models
             Console.WriteLine("+---------+---------+---------+---------+---------+");
         }
 
-        public void DisplayGameStatus()
+        public void DisplayGameStatus(IPlayer player)
         {
             Console.Clear();
+            Console.CursorVisible = false;
 
             Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
             int initialLeft = Console.CursorLeft;
@@ -93,106 +96,228 @@ namespace tictactoe_cli.Models
             Console.Write(C3[0]);
 
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, currentTop + 1);
+
+            CheckIfGameIsOver(player);
         }
 
-        public string TakeAction(IPlayer player)
+        public void TakeAction(IPlayer player)
         {
             Console.CursorVisible = true;
 
-            Console.WriteLine("- - - PLAYER {0} - - -", player.Name);
-            Console.WriteLine("Pick a field to place your symbol by typing the field's coordinate.");
-            Console.WriteLine("(for example, type: A1)");
-            Console.Write("Field:\t");
-            string fieldName = Console.ReadLine();
-
-            switch (fieldName)
+            while (true)
             {
-                case "A1":
-                case "a1":
-                case "1A":
-                case "1a":
-                    A1[0] = player.Symbol;
-                    break;
+                Console.WriteLine("- - - PLAYER {0} - - -", player.Name);
+                Console.WriteLine("Pick a field to place your symbol by typing the field's coordinate.");
+                Console.WriteLine("(for example, type: A1)");
+                Console.Write("Field:\t");
+                string fieldName = Console.ReadLine();
 
-                case "A2":
-                case "a2":
-                case "2A":
-                case "2a":
-                    A2[0] = player.Symbol;
-                    break;
+                switch (fieldName)
+                {
+                    case "A1":
+                    case "a1":
+                    case "1A":
+                    case "1a":
+                        if (string.IsNullOrWhiteSpace(A1[0]))
+                        {
+                            A1[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                case "A3":
-                case "a3":
-                case "3A":
-                case "3a":
-                    A3[0] = player.Symbol;
-                    break;
+                    case "A2":
+                    case "a2":
+                    case "2A":
+                    case "2a":
+                        if (string.IsNullOrWhiteSpace(A2[0]))
+                        {
+                            A2[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                case "B1":
-                case "b1":
-                case "1B":
-                case "1b":
-                    B1[0] = player.Symbol;
-                    break;
+                    case "A3":
+                    case "a3":
+                    case "3A":
+                    case "3a":
+                        if (string.IsNullOrWhiteSpace(A3[0]))
+                        {
+                            A3[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                case "B2":
-                case "b2":
-                case "2B":
-                case "2b":
-                    B2[0] = player.Symbol;
-                    break;
+                    case "B1":
+                    case "b1":
+                    case "1B":
+                    case "1b":
+                        if (string.IsNullOrWhiteSpace(B1[0]))
+                        {
+                            B1[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                case "B3":
-                case "b3":
-                case "3B":
-                case "3b":
-                    B3[0] = player.Symbol;
-                    break;
+                    case "B2":
+                    case "b2":
+                    case "2B":
+                    case "2b":
+                        if (string.IsNullOrWhiteSpace(B2[0]))
+                        {
+                            B2[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                case "C1":
-                case "c1":
-                case "1C":
-                case "1c":
-                    C1[0] = player.Symbol;
-                    break;
+                    case "B3":
+                    case "b3":
+                    case "3B":
+                    case "3b":
+                        if (string.IsNullOrWhiteSpace(B3[0]))
+                        {
+                            B3[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                case "C2":
-                case "c2":
-                case "2C":
-                case "2c":
-                    C2[0] = player.Symbol;
-                    break;
+                    case "C1":
+                    case "c1":
+                    case "1C":
+                    case "1c":
+                        if (string.IsNullOrWhiteSpace(C1[0]))
+                        {
+                            C1[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                case "C3":
-                case "c3":
-                case "3C":
-                case "3c":
-                    C3[0] = player.Symbol;
-                    break;
+                    case "C2":
+                    case "c2":
+                    case "2C":
+                    case "2c":
+                        if (string.IsNullOrWhiteSpace(C2[0]))
+                        {
+                            C2[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
 
-                default:
-                    Console.WriteLine("ungültige Eingabe");
-                    break;
+                    case "C3":
+                    case "c3":
+                    case "3C":
+                    case "3c":
+                        if (string.IsNullOrWhiteSpace(C3[0]))
+                        {
+                            C3[0] = player.Symbol;
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("field is already claimed\n");
+                            break;
+                        }
+
+                    default:
+                        Console.WriteLine("ungültige Eingabe\n");
+                        break;
+                }
             }
-
-            return fieldName;
         }
 
-        public void GameIsDraw()
+        public void CheckIfGameIsDraw()
         {
-            if (string.IsNullOrWhiteSpace(A1[0]) || string.IsNullOrWhiteSpace(A2[0]) || string.IsNullOrWhiteSpace(A3[0]) || string.IsNullOrWhiteSpace(B1[0]) || string.IsNullOrWhiteSpace(B2[0]) || string.IsNullOrWhiteSpace(B3[0]) || string.IsNullOrWhiteSpace(C1[0]) || string.IsNullOrWhiteSpace(C2[0]) || string.IsNullOrWhiteSpace(C3[0]))
-            {
-                GameIsOver = false;
-            }
-            else
+            Console.CursorVisible = false;
+
+            if (!string.IsNullOrWhiteSpace(A1[0]) && !string.IsNullOrWhiteSpace(A2[0]) && !string.IsNullOrWhiteSpace(A3[0]) && !string.IsNullOrWhiteSpace(B1[0]) && !string.IsNullOrWhiteSpace(B2[0]) && !string.IsNullOrWhiteSpace(B3[0]) && !string.IsNullOrWhiteSpace(C1[0]) && !string.IsNullOrWhiteSpace(C2[0]) && !string.IsNullOrWhiteSpace(C3[0]))
             {
                 GameIsOver = true;
+
+                Console.WriteLine("\nGame is over:\tDRAW");
+                Console.ReadKey();
             }
         }
 
-        public void GameIsWon()
+        public void CheckIfGameIsWon(IPlayer player)
         {
-            throw new NotImplementedException();
+            Console.CursorVisible = false;
+
+            string verticalLine_A = A1[0] + A2[0] + A3[0];
+            string verticalLine_B = B1[0] + B2[0] + B3[0];
+            string verticalLine_C = C1[0] + C2[0] + C3[0];
+
+            string horizontalLine_1 = A1[0] + B1[0] + C1[0];
+            string horizontalLine_2 = A2[0] + B2[0] + C2[0];
+            string horizontalLine_3 = A3[0] + B3[0] + C3[0];
+
+            string crossLineLeft = A1[0] + B2[0] + C3[0];
+            string crossLineRight = C1[0] + B2[0] + A3[0];
+
+            string tripleLine = player.Symbol + player.Symbol + player.Symbol;
+            //string tripleLine = "P@ssw0rd";
+
+            if (verticalLine_A.Equals(tripleLine) || verticalLine_B.Equals(tripleLine) || verticalLine_C.Equals(tripleLine))
+            {
+                GameIsOver = true;
+
+                Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
+                Console.ReadKey();
+            }
+
+            if (horizontalLine_1.Equals(tripleLine) || horizontalLine_2.Equals(tripleLine) || horizontalLine_3.Equals(tripleLine))
+            {
+                GameIsOver = true;
+
+                Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
+                Console.ReadKey();
+            }
+
+            if (crossLineLeft.Equals(tripleLine) || crossLineRight.Equals(tripleLine))
+            {
+                GameIsOver = true;
+
+                Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
+                Console.ReadKey();
+            }
+        }
+
+        public void CheckIfGameIsOver(IPlayer player)
+        {
+            Console.CursorVisible = false;
+
+            CheckIfGameIsWon(player);
+            CheckIfGameIsDraw();
         }
 
         public void WriteGameLog()

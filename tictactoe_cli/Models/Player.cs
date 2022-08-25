@@ -19,12 +19,13 @@ namespace tictactoe_cli.Models
             _playerCounter++;
             Name = NameFromInput();
             Symbol = SymbolFromList();
-            Avatar = AvatarFromList();
+            //Avatar = AvatarFromList();
         }
 
         private static string NameFromInput()
         {
             Console.Clear();
+            Console.CursorVisible = true;
             Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
             Console.WriteLine("Enter your name or leave empty to get a random name:");
             string input = Console.ReadLine();
@@ -33,16 +34,18 @@ namespace tictactoe_cli.Models
             {
                 input = NameFromList();
             }
+            Console.CursorVisible = false;
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop - 1);
             Console.WriteLine("Your name is: {0}.", input);
 
-            Console.ReadLine();
-            //Console.Clear();
+            Console.ReadKey();
             return input;
         }
 
         private static string NameFromList()
         {
+            Console.CursorVisible = false;
+
             int nameCount = 0;
 
             // "Could not find a part of the path '${HOME}\\source\\repos\\tictactoe_app\\tictactoe_cli\\bin\\Debug\\netcoreapp3.1\\tictactoe_cli\\Data\\names.txt'."
@@ -91,54 +94,54 @@ namespace tictactoe_cli.Models
             return symbol;
         }
 
-        private static Bitmap AvatarFromInput()
-        {
-            string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
-            
-            List<Bitmap> bitmapList = new List<Bitmap>();
-            foreach (string image in imageStorage)
-            {
-                bitmapList.Add(new Bitmap(image));
-            }
-            bitmapList.TrimExcess();
+        //private static Bitmap AvatarFromInput()
+        //{
+        //    string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
 
-            //foreach (Bitmap image in bitmapList)
-            //{
-            //    image.ToGrayscaleArray();
-            //}
+        //    List<Bitmap> bitmapList = new List<Bitmap>();
+        //    foreach (string image in imageStorage)
+        //    {
+        //        bitmapList.Add(new Bitmap(image));
+        //    }
+        //    bitmapList.TrimExcess();
 
-            Console.WriteLine("Choose an avatar by typing its number:");
+        //    //foreach (Bitmap image in bitmapList)
+        //    //{
+        //    //    image.ToGrayscaleArray();
+        //    //}
 
-            foreach (Bitmap image in bitmapList)
-            {
-                image.ToAsciiWhiteForeground();
-            }
+        //    Console.WriteLine("Choose an avatar by typing its number:");
 
-            return bitmapList.ToArray()[0];
+        //    foreach (Bitmap image in bitmapList)
+        //    {
+        //        image.ToAsciiWhiteForeground();
+        //    }
 
-            // Console.WriteLine("Enter the number of your avatar or leave empty to get a random avatar:");
-        }
+        //    return bitmapList.ToArray()[0];
 
-        private static Bitmap AvatarFromList()
-        {
-            Console.Clear();
-            string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
+        //    // Console.WriteLine("Enter the number of your avatar or leave empty to get a random avatar:");
+        //}
 
-            List<Bitmap> bitmapList = new List<Bitmap>();
-            foreach (string image in imageStorage)
-            {
-                bitmapList.Add(new Bitmap(image));
-            }
-            bitmapList.TrimExcess();
+        //private static Bitmap AvatarFromList()
+        //{
+        //    Console.Clear();
+        //    string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
 
-            //Console.Clear();
-            Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
-            Console.Write("Your avatar is:\t\t\t");
+        //    List<Bitmap> bitmapList = new List<Bitmap>();
+        //    foreach (string image in imageStorage)
+        //    {
+        //        bitmapList.Add(new Bitmap(image));
+        //    }
+        //    bitmapList.TrimExcess();
 
-            bitmapList.ToArray()[0].ToAsciiWhiteForegroundSetup();
+        //    //Console.Clear();
+        //    Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
+        //    Console.Write("Your avatar is:\t\t\t");
 
-            Console.ReadLine();
-            return bitmapList.ToArray()[0];
-        }
+        //    bitmapList.ToArray()[0].ToAsciiWhiteForegroundSetup();
+
+        //    Console.ReadLine();
+        //    return bitmapList.ToArray()[0];
+        //}
     }
 }
