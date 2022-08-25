@@ -20,6 +20,7 @@
         public abstract void DisplayGameStatus(IPlayer player);
         public abstract void DisplayPlayerScore(IPlayer player_1, IPlayer player_2);
         public abstract void ResetGameBoard();
+        public abstract void SwapPlayerLineUp();
         public abstract void TakeAction(IPlayer player);
         public abstract void CheckIfGameIsDraw();
         public abstract void CheckIfGameIsWon(IPlayer player);

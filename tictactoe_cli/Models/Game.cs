@@ -165,6 +165,14 @@ namespace tictactoe_cli.Models
             A3[0] = " ";
             B3[0] = " ";
             C3[0] = " ";
+
+            SwapPlayerLineUp();
+        }
+        public void SwapPlayerLineUp()
+        {
+            IPlayer playerSwap = Player_2;
+            Player_2 = Player_1;
+            Player_1 = playerSwap;
         }
 
         public void TakeAction(IPlayer player)
