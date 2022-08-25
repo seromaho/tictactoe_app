@@ -20,7 +20,7 @@ namespace tictactoe_cli.Models
             _playerCounter++;
             Name = NameFromInput();
             Symbol = SymbolFromList();
-            //Avatar = AvatarFromList();
+            Avatar = AvatarFromList();
             NumGamesWon = 0;
             NumGamesLost = 0;
 
@@ -84,6 +84,21 @@ namespace tictactoe_cli.Models
             }
 
             return symbol;
+        }
+
+        private static Bitmap AvatarFromList()
+        {
+            string symbol_2 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-2-white-25x25.png");
+            string symbol_1 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-1-white-25x25.png");
+
+            if (_playerCounter % 2 == 0)
+            {
+                return new Bitmap(symbol_2);
+            }
+            else
+            {
+                return new Bitmap(symbol_1);
+            }
         }
 
         //private static Bitmap AvatarFromInput()

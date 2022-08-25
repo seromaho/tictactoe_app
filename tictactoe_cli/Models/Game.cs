@@ -179,6 +179,7 @@ namespace tictactoe_cli.Models
         public void TakeAction(IPlayer player)
         {
             Console.CursorVisible = true;
+            player.Avatar.ToAsciiBlackForeground();
 
             while (true)
             {

@@ -116,7 +116,9 @@ namespace Extensions
                 }
             }
 
-            Console.SetCursorPosition(54, Console.CursorTop - Console.CursorTop);
+            Console.SetCursorPosition(60, Console.CursorTop - Console.CursorTop + 3);
+            Console.WriteLine("Your symbol is:");
+            Console.SetCursorPosition(60, Console.CursorTop);
 
             string symbol;
 
@@ -156,11 +158,9 @@ namespace Extensions
                 //Console.Write(" {0,2},{1,2}", Console.WindowWidth, Console.WindowHeight);
                 Console.Write("\n");
 
-                Console.SetCursorPosition(54, Console.CursorTop);
+                Console.SetCursorPosition(60, Console.CursorTop);
             }
 
-            Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop - Console.CursorTop);
-            Console.Write(" ");
             Console.SetCursorPosition(left, top);
         }
 
