@@ -22,8 +22,8 @@
         public abstract void ResetGameBoard();
         public abstract void SwapPlayerLineUp();
         public abstract void TakeAction(IPlayer player);
-        public abstract void CheckIfGameIsDraw();
-        public abstract void CheckIfGameIsWon(IPlayer player);
+        public abstract bool CheckIfGameIsDraw();
+        public abstract bool CheckIfGameIsWon(IPlayer player);
         public abstract void CheckIfGameIsOver(IPlayer player);
         public abstract void WriteGameLog();
     }

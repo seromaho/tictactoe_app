@@ -168,6 +168,7 @@ namespace tictactoe_cli.Models
 
             SwapPlayerLineUp();
         }
+
         public void SwapPlayerLineUp()
         {
             IPlayer playerSwap = Player_2;
@@ -331,20 +332,57 @@ namespace tictactoe_cli.Models
             }
         }
 
-        public void CheckIfGameIsDraw()
+        public bool CheckIfGameIsDraw()
         {
             Console.CursorVisible = false;
 
             if (!string.IsNullOrWhiteSpace(A1[0]) && !string.IsNullOrWhiteSpace(A2[0]) && !string.IsNullOrWhiteSpace(A3[0]) && !string.IsNullOrWhiteSpace(B1[0]) && !string.IsNullOrWhiteSpace(B2[0]) && !string.IsNullOrWhiteSpace(B3[0]) && !string.IsNullOrWhiteSpace(C1[0]) && !string.IsNullOrWhiteSpace(C2[0]) && !string.IsNullOrWhiteSpace(C3[0]))
             {
-                GameIsOver = true;
+                //GameIsOver = true;
 
                 Console.WriteLine("\nGame is over:\tDRAW");
                 Console.ReadKey();
+                return true;
             }
+
+            string verticalLine_A = A1[0] + A2[0] + A3[0];
+            string verticalLine_B = B1[0] + B2[0] + B3[0];
+            string verticalLine_C = C1[0] + C2[0] + C3[0];
+
+            string horizontalLine_1 = A1[0] + B1[0] + C1[0];
+            string horizontalLine_2 = A2[0] + B2[0] + C2[0];
+            string horizontalLine_3 = A3[0] + B3[0] + C3[0];
+
+            string crossLineLeft = A1[0] + B2[0] + C3[0];
+            string crossLineRight = C1[0] + B2[0] + A3[0];
+
+            string tripleLine_1 = Player_1.Symbol + Player_1.Symbol + Player_1.Symbol;
+            string tripleLine_2 = Player_2.Symbol + Player_2.Symbol + Player_2.Symbol;
+
+            if (
+                !verticalLine_A.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !verticalLine_A.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
+                !verticalLine_B.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !verticalLine_B.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
+                !verticalLine_C.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !verticalLine_C.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
+
+                !horizontalLine_1.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !horizontalLine_1.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
+                !horizontalLine_2.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !horizontalLine_2.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
+                !horizontalLine_3.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !horizontalLine_3.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
+
+                !crossLineLeft.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !crossLineLeft.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
+                !crossLineRight.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !crossLineRight.Replace(" ", Player_2.Symbol).Equals(tripleLine_2)
+               )
+            {
+                //GameIsOver = true;
+
+                Console.WriteLine("\nGame is over:\tDRAW");
+                Console.ReadKey();
+                return true;
+            }
+
+            return false;
         }
 
-        public void CheckIfGameIsWon(IPlayer player)
+        public bool CheckIfGameIsWon(IPlayer player)
         {
             Console.CursorVisible = false;
 
@@ -363,38 +401,49 @@ namespace tictactoe_cli.Models
 
             if (verticalLine_A.Equals(tripleLine) || verticalLine_B.Equals(tripleLine) || verticalLine_C.Equals(tripleLine))
             {
-                GameIsOver = true;
+                //GameIsOver = true;
                 player.NumGamesWon++;
 
                 Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
                 Console.ReadKey();
+                return true;
             }
 
             if (horizontalLine_1.Equals(tripleLine) || horizontalLine_2.Equals(tripleLine) || horizontalLine_3.Equals(tripleLine))
             {
-                GameIsOver = true;
+                //GameIsOver = true;
                 player.NumGamesWon++;
 
                 Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
                 Console.ReadKey();
+                return true;
             }
 
             if (crossLineLeft.Equals(tripleLine) || crossLineRight.Equals(tripleLine))
             {
-                GameIsOver = true;
+                //GameIsOver = true;
                 player.NumGamesWon++;
 
                 Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
                 Console.ReadKey();
+                return true;
             }
+
+            return false;
         }
 
         public void CheckIfGameIsOver(IPlayer player)
         {
             Console.CursorVisible = false;
 
-            CheckIfGameIsWon(player);
-            CheckIfGameIsDraw();
+            if (CheckIfGameIsWon(player))
+            {
+                GameIsOver = true;
+            }
+            else if (CheckIfGameIsDraw())
+            {
+                GameIsOver = true;
+            }
         }
 
         public void WriteGameLog()
