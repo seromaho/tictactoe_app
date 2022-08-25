@@ -62,12 +62,52 @@ namespace tictactoe_cli.Models
             Console.WriteLine("+---------+---------+---------+---------+---------+");
         }
 
+        public void DisplayGameStatus()
+        {
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
+            DisplayPlayerScore(player_1, player_2);
+
+            int initialLeft = Console.CursorLeft;
+            int initialTop = Console.CursorTop;
+
+            DisplayGameBoard();
+
+            //int currentLeft = Console.CursorLeft;
+            int currentTop = Console.CursorTop;
+
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(A1[1]), initialTop + Convert.ToInt32(A1[2]));
+            Console.Write(A1[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(A2[1]), initialTop + Convert.ToInt32(A2[2]));
+            Console.Write(A2[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(A3[1]), initialTop + Convert.ToInt32(A3[2]));
+            Console.Write(A3[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(B1[1]), initialTop + Convert.ToInt32(B1[2]));
+            Console.Write(B1[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(B2[1]), initialTop + Convert.ToInt32(B2[2]));
+            Console.Write(B2[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(B3[1]), initialTop + Convert.ToInt32(B3[2]));
+            Console.Write(B3[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(C1[1]), initialTop + Convert.ToInt32(C1[2]));
+            Console.Write(C1[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(C2[1]), initialTop + Convert.ToInt32(C2[2]));
+            Console.Write(C2[0]);
+            Console.SetCursorPosition(initialLeft + Convert.ToInt32(C3[1]), initialTop + Convert.ToInt32(C3[2]));
+            Console.Write(C3[0]);
+
+            Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, currentTop + 1);
+        }
+
         public void DisplayGameStatus(IPlayer player)
         {
             Console.Clear();
             Console.CursorVisible = false;
 
             Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
+            DisplayPlayerScore(player_1, player_2);
+
             int initialLeft = Console.CursorLeft;
             int initialTop = Console.CursorTop;
 
@@ -98,6 +138,32 @@ namespace tictactoe_cli.Models
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, currentTop + 1);
 
             CheckIfGameIsOver(player);
+        }
+
+        public void DisplayPlayerScore(IPlayer player_1, IPlayer player_2)
+        {
+            Console.Write("Number of games won:\t");
+            int cursorLeft = Console.CursorLeft;
+            int cursorTop = Console.CursorTop;
+            Console.WriteLine("{0} - {1}", player_1.Name, player_1.NumGamesWon);
+            Console.SetCursorPosition(cursorLeft, cursorTop + 1);
+            Console.WriteLine("{0} - {1}", player_2.Name, player_2.NumGamesWon);
+            Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop + 2);
+        }
+
+        public void ResetGameBoard()
+        {
+            GameIsOver = false;
+
+            A1[0] = " ";
+            B1[0] = " ";
+            C1[0] = " ";
+            A2[0] = " ";
+            B2[0] = " ";
+            C2[0] = " ";
+            A3[0] = " ";
+            B3[0] = " ";
+            C3[0] = " ";
         }
 
         public void TakeAction(IPlayer player)
@@ -290,6 +356,7 @@ namespace tictactoe_cli.Models
             if (verticalLine_A.Equals(tripleLine) || verticalLine_B.Equals(tripleLine) || verticalLine_C.Equals(tripleLine))
             {
                 GameIsOver = true;
+                player.NumGamesWon++;
 
                 Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
                 Console.ReadKey();
@@ -298,6 +365,7 @@ namespace tictactoe_cli.Models
             if (horizontalLine_1.Equals(tripleLine) || horizontalLine_2.Equals(tripleLine) || horizontalLine_3.Equals(tripleLine))
             {
                 GameIsOver = true;
+                player.NumGamesWon++;
 
                 Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
                 Console.ReadKey();
@@ -306,6 +374,7 @@ namespace tictactoe_cli.Models
             if (crossLineLeft.Equals(tripleLine) || crossLineRight.Equals(tripleLine))
             {
                 GameIsOver = true;
+                player.NumGamesWon++;
 
                 Console.WriteLine("\nGame is over:\tWINNER IS PLAYER {0} !", player.Name.ToUpper());
                 Console.ReadKey();

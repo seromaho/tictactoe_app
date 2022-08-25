@@ -13,23 +13,40 @@ namespace tictactoe_cli
 
             while (true)
             {
-                ticTacToe.DisplayGameStatus(ticTacToe.player_2);
+                while (true)
+                {
+                    ticTacToe.DisplayGameStatus(ticTacToe.player_2);
 
-                if (ticTacToe.GameIsOver)
+                    if (ticTacToe.GameIsOver)
+                    {
+                        break;
+                    }
+
+                    ticTacToe.TakeAction(ticTacToe.player_1);
+
+                    ticTacToe.DisplayGameStatus(ticTacToe.player_1);
+
+                    if (ticTacToe.GameIsOver)
+                    {
+                        break;
+                    }
+
+                    ticTacToe.TakeAction(ticTacToe.player_2);
+                }
+
+                ticTacToe.DisplayGameStatus();
+                Console.CursorVisible = true;
+                Console.Write("\nTo have a rematch type 'y' or 'yes':\t");
+                string reMatch = Console.ReadLine();
+
+                if (!reMatch.ToLower().Equals("y") && !reMatch.ToLower().Equals("yes"))
                 {
                     break;
                 }
-
-                ticTacToe.TakeAction(ticTacToe.player_1);
-
-                ticTacToe.DisplayGameStatus(ticTacToe.player_1);
-
-                if (ticTacToe.GameIsOver)
+                else
                 {
-                    break;
+                    ticTacToe.ResetGameBoard();
                 }
-
-                ticTacToe.TakeAction(ticTacToe.player_2);
             }
         }
     }
