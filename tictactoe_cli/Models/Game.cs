@@ -192,7 +192,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -207,7 +207,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -222,7 +222,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -237,7 +237,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -252,7 +252,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -267,7 +267,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -282,7 +282,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -297,7 +297,7 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
@@ -312,12 +312,12 @@ namespace tictactoe_cli.Models
                         }
                         else
                         {
-                            Console.WriteLine("field is already claimed\n");
+                            Console.WriteLine("field is already claimed - try again\n");
                             break;
                         }
 
                     default:
-                        Console.WriteLine("ungültige Eingabe\n");
+                        Console.WriteLine("invalid input - try again\n");
                         break;
                 }
             }
@@ -352,7 +352,6 @@ namespace tictactoe_cli.Models
             string crossLineRight = C1[0] + B2[0] + A3[0];
 
             string tripleLine = player.Symbol + player.Symbol + player.Symbol;
-            //string tripleLine = "P@ssw0rd";
 
             if (verticalLine_A.Equals(tripleLine) || verticalLine_B.Equals(tripleLine) || verticalLine_C.Equals(tripleLine))
             {

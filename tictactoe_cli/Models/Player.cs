@@ -1,5 +1,6 @@
 ﻿using Extensions;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
@@ -52,8 +53,9 @@ namespace tictactoe_cli.Models
             int nameCount = 0;
 
             // "Could not find a part of the path '${HOME}\\source\\repos\\tictactoe_app\\tictactoe_cli\\bin\\Debug\\netcoreapp3.1\\tictactoe_cli\\Data\\names.txt'."
-            FileStream streamReader_0 = new FileStream(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt"), FileMode.OpenOrCreate);
-            StreamReader streamReader_1 = new StreamReader(streamReader_0);
+            string nameListStorage = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt");
+            FileStream fileStream = new FileStream(nameListStorage, FileMode.Open);
+            StreamReader streamReader_1 = new StreamReader(fileStream);
             
             while (streamReader_1.EndOfStream == false)
             {
@@ -62,20 +64,20 @@ namespace tictactoe_cli.Models
             }
 
             streamReader_1.Close();
-            streamReader_0.Close();
+            fileStream.Close();
 
-            StreamReader streamReader_3 = new StreamReader(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt"));
+            StreamReader streamReader_2 = new StreamReader(nameListStorage);
 
             string[] nameArray = new string[nameCount];
             int nameIndex = 0;
 
-            while (streamReader_3.EndOfStream == false)
+            while (streamReader_2.EndOfStream == false)
             {
-                nameArray[nameIndex] = streamReader_3.ReadLine();
+                nameArray[nameIndex] = streamReader_2.ReadLine();
                 nameIndex++;
             }
 
-            streamReader_3.Close();
+            streamReader_2.Close();
 
             Random RNG = new Random();
             return nameArray[RNG.Next(0, nameArray.Length)].CapitalizeFirstLetter();
@@ -97,54 +99,54 @@ namespace tictactoe_cli.Models
             return symbol;
         }
 
-        //private static Bitmap AvatarFromInput()
-        //{
-        //    string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
+        private static Bitmap AvatarFromInput()
+        {
+            string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
 
-        //    List<Bitmap> bitmapList = new List<Bitmap>();
-        //    foreach (string image in imageStorage)
-        //    {
-        //        bitmapList.Add(new Bitmap(image));
-        //    }
-        //    bitmapList.TrimExcess();
+            List<Bitmap> bitmapList = new List<Bitmap>();
+            foreach (string image in imageStorage)
+            {
+                bitmapList.Add(new Bitmap(image));
+            }
+            bitmapList.TrimExcess();
 
-        //    //foreach (Bitmap image in bitmapList)
-        //    //{
-        //    //    image.ToGrayscaleArray();
-        //    //}
+            //foreach (Bitmap image in bitmapList)
+            //{
+            //    image.ToGrayscaleArray();
+            //}
 
-        //    Console.WriteLine("Choose an avatar by typing its number:");
+            Console.WriteLine("Choose an avatar by typing its number:");
 
-        //    foreach (Bitmap image in bitmapList)
-        //    {
-        //        image.ToAsciiWhiteForeground();
-        //    }
+            foreach (Bitmap image in bitmapList)
+            {
+                image.ToAsciiWhiteForeground();
+            }
 
-        //    return bitmapList.ToArray()[0];
+            return bitmapList.ToArray()[0];
 
-        //    // Console.WriteLine("Enter the number of your avatar or leave empty to get a random avatar:");
-        //}
+            // Console.WriteLine("Enter the number of your avatar or leave empty to get a random avatar:");
+        }
 
-        //private static Bitmap AvatarFromList()
-        //{
-        //    Console.Clear();
-        //    string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
+        private static Bitmap AvatarFromList()
+        {
+            Console.Clear();
+            string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
 
-        //    List<Bitmap> bitmapList = new List<Bitmap>();
-        //    foreach (string image in imageStorage)
-        //    {
-        //        bitmapList.Add(new Bitmap(image));
-        //    }
-        //    bitmapList.TrimExcess();
+            List<Bitmap> bitmapList = new List<Bitmap>();
+            foreach (string image in imageStorage)
+            {
+                bitmapList.Add(new Bitmap(image));
+            }
+            bitmapList.TrimExcess();
 
-        //    //Console.Clear();
-        //    Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
-        //    Console.Write("Your avatar is:\t\t\t");
+            //Console.Clear();
+            Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
+            Console.Write("Your avatar is:\t\t\t");
 
-        //    bitmapList.ToArray()[0].ToAsciiWhiteForegroundSetup();
+            bitmapList.ToArray()[0].ToAsciiWhiteForegroundSetup();
 
-        //    Console.ReadLine();
-        //    return bitmapList.ToArray()[0];
-        //}
+            Console.ReadLine();
+            return bitmapList.ToArray()[0];
+        }
     }
 }
