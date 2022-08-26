@@ -21,19 +21,19 @@ namespace Extensions
             {
                 Console.SetCursorPosition(22, Console.CursorTop);
                 Console.Write(" {0,2} % ", (index) * 2);
-                Thread.Sleep(RNG.Next(50));
+                Thread.Sleep(RNG.Next(20));
                 Console.SetCursorPosition(index, Console.CursorTop);
                 Console.Write("-");
-                Thread.Sleep(RNG.Next(50));
+                Thread.Sleep(RNG.Next(20));
                 Console.SetCursorPosition(index, Console.CursorTop);
                 Console.Write("\\");
-                Thread.Sleep(RNG.Next(50));
+                Thread.Sleep(RNG.Next(20));
                 Console.SetCursorPosition(index, Console.CursorTop);
                 Console.Write("|");
-                Thread.Sleep(RNG.Next(50));
+                Thread.Sleep(RNG.Next(20));
                 Console.SetCursorPosition(index, Console.CursorTop);
                 Console.Write("/");
-                Thread.Sleep(RNG.Next(50));
+                Thread.Sleep(RNG.Next(20));
             }
 
             Console.Clear();
