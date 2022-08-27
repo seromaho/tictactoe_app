@@ -8,6 +8,16 @@ namespace tictactoe_cli
     {
         static void Main(string[] args)
         {
+            // Save the console window width before modifying it
+            // Save the console window height before modifying it
+            Tuple<int, int> originalWindowSize = new Tuple<int, int>(Console.WindowWidth, Console.WindowHeight);
+
+            // Save the screen buffer area width before modifying it
+            int originalBufferWidth = Console.BufferWidth;
+
+            // Set the console window width to fit the application
+            // Set the console window height to fit the screen
+            // Set the screen buffer area width to fit the application
             Console_Extensions.FitWindowAndBufferSize();
 
             Game ticTacToe = new Game();
@@ -59,6 +69,10 @@ namespace tictactoe_cli
 
                 // END OF REMATCH LOOP //////////////////////
             }
+
+            // Revert the changes made to console window width and console window height
+            // Revert the changes made to the screen buffer area width
+            Console_Extensions.RestoreWindowAndBufferSize(originalWindowSize, originalBufferWidth);
         }
     }
 }

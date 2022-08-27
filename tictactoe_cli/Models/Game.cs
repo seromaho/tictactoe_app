@@ -39,10 +39,10 @@ namespace tictactoe_cli.Models
             Console.CursorVisible = false;
 
             // Draw the empty playing field
-            Console.WriteLine("+---------+---------+---------+---------+---------+");
-            Console.WriteLine("|         |         |         |         |         |");
-            Console.WriteLine("|         |    A    |    B    |    C    |         |");
-            Console.WriteLine("|         |         |         |         |         |");
+            Console.WriteLine("          +---------+---------+---------+");
+            Console.WriteLine("          |         |         |         |");
+            Console.WriteLine("          |    A    |    B    |    C    |");
+            Console.WriteLine("          |         |         |         |");
             Console.WriteLine("+---------+---------+---------+---------+---------+");
             Console.WriteLine("|         |         |         |         |         |");
             Console.WriteLine("|    1    |         |         |         |    1    |");
@@ -56,10 +56,10 @@ namespace tictactoe_cli.Models
             Console.WriteLine("|    3    |         |         |         |    3    |");
             Console.WriteLine("|         |         |         |         |         |");
             Console.WriteLine("+---------+---------+---------+---------+---------+");
-            Console.WriteLine("|         |         |         |         |         |");
-            Console.WriteLine("|         |    A    |    B    |    C    |         |");
-            Console.WriteLine("|         |         |         |         |         |");
-            Console.WriteLine("+---------+---------+---------+---------+---------+");
+            Console.WriteLine("          |         |         |         |");
+            Console.WriteLine("          |    A    |    B    |    C    |");
+            Console.WriteLine("          |         |         |         |");
+            Console.WriteLine("          +---------+---------+---------+");
         }
 
         public void DisplayGameStatus()

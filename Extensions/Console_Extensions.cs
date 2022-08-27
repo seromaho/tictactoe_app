@@ -15,6 +15,17 @@ namespace Extensions
             Console.SetBufferSize(111, Console.BufferHeight);
         }
 
+        public static void RestoreWindowAndBufferSize(Tuple<int, int> windowSize, int bufferWidth)
+        {
+            // Revert the changes made to console window width and console window height
+            // by parsing in the original values
+            Console.SetWindowSize(windowSize.Item1, windowSize.Item2);
+
+            // Revert the changes made to the screen buffer area width
+            // by parsing in the original values
+            Console.SetBufferSize(bufferWidth, Console.BufferHeight);
+        }
+
         public static void LoadingBar()
         {
             Random RNG = new Random();
