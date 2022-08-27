@@ -20,8 +20,6 @@ namespace tictactoe_cli.Models
 
         public Game()
         {
-            //Console_Extensions.Ladebalken();
-
             A1 = new string[3] { " ", "15", "6" };
             B1 = new string[3] { " ", "25", "6" };
             C1 = new string[3] { " ", "35", "6" };
@@ -40,6 +38,7 @@ namespace tictactoe_cli.Models
         {
             Console.CursorVisible = false;
 
+            // Draw the empty playing field
             Console.WriteLine("+---------+---------+---------+---------+---------+");
             Console.WriteLine("|         |         |         |         |         |");
             Console.WriteLine("|         |    A    |    B    |    C    |         |");
@@ -71,14 +70,18 @@ namespace tictactoe_cli.Models
             Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
             DisplayPlayerScore(Player_1, Player_2);
 
+            // Save cursor position before drawing the playing field
             int initialLeft = Console.CursorLeft;
             int initialTop = Console.CursorTop;
 
+            // Draw the empty playing field
             DisplayGameBoard();
 
-            //int currentLeft = Console.CursorLeft;
+            // Save cursor top position after drawing the playing field
             int currentTop = Console.CursorTop;
 
+            // Place both player's symbols onto the playing field as required
+            // Use cursor position "before drawing the playing field" as reference
             Console.SetCursorPosition(initialLeft + Convert.ToInt32(A1[1]), initialTop + Convert.ToInt32(A1[2]));
             Console.Write(A1[0]);
             Console.SetCursorPosition(initialLeft + Convert.ToInt32(A2[1]), initialTop + Convert.ToInt32(A2[2]));
@@ -98,6 +101,7 @@ namespace tictactoe_cli.Models
             Console.SetCursorPosition(initialLeft + Convert.ToInt32(C3[1]), initialTop + Convert.ToInt32(C3[2]));
             Console.Write(C3[0]);
 
+            // Return to cursor position "after drawing the playing field"
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, currentTop + 1);
         }
 
@@ -109,14 +113,18 @@ namespace tictactoe_cli.Models
             Console.WriteLine("- - - Tic Tac Toe - - -\n\n");
             DisplayPlayerScore(Player_1, Player_2);
 
+            // Save cursor position before drawing the playing field
             int initialLeft = Console.CursorLeft;
             int initialTop = Console.CursorTop;
 
+            // Draw the empty playing field
             DisplayGameBoard();
 
-            //int currentLeft = Console.CursorLeft;
+            // Save cursor top position after drawing the playing field
             int currentTop = Console.CursorTop;
 
+            // Place both player's symbols onto the playing field as required
+            // Use cursor position "before drawing the playing field" as reference
             Console.SetCursorPosition(initialLeft + Convert.ToInt32(A1[1]), initialTop + Convert.ToInt32(A1[2]));
             Console.Write(A1[0]);
             Console.SetCursorPosition(initialLeft + Convert.ToInt32(A2[1]), initialTop + Convert.ToInt32(A2[2]));
@@ -136,6 +144,7 @@ namespace tictactoe_cli.Models
             Console.SetCursorPosition(initialLeft + Convert.ToInt32(C3[1]), initialTop + Convert.ToInt32(C3[2]));
             Console.Write(C3[0]);
 
+            // Return to cursor position "after drawing the playing field"
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, currentTop + 1);
 
             CheckIfGameIsOver(player);
@@ -171,6 +180,7 @@ namespace tictactoe_cli.Models
 
         public void SwapPlayerLineUp()
         {
+            // Switch around players to alternate their starting position in case of a rematch
             IPlayer playerSwap = Player_2;
             Player_2 = Player_1;
             Player_1 = playerSwap;
@@ -179,6 +189,8 @@ namespace tictactoe_cli.Models
         public void TakeAction(IPlayer player)
         {
             Console.CursorVisible = true;
+
+            // Display an image of current player's symbol
             player.Avatar.ToAsciiBlackForeground();
 
             while (true)
@@ -189,6 +201,10 @@ namespace tictactoe_cli.Models
                 Console.Write("Field:\t");
                 string fieldName = Console.ReadLine();
 
+                // Check if player's input is a valid playing field name
+                // Check if the chosen playing field is still empty and available
+                // Place player's symbol on the chosen playing field if both checks return true
+                // Restart the input process if any check returns false
                 switch (fieldName)
                 {
                     case "A1":
@@ -337,6 +353,8 @@ namespace tictactoe_cli.Models
         {
             Console.CursorVisible = false;
 
+            // Check if any game board fields are empty
+            // End the game if there aren't any empty game board fields
             if (!string.IsNullOrWhiteSpace(A1[0]) && !string.IsNullOrWhiteSpace(A2[0]) && !string.IsNullOrWhiteSpace(A3[0]) && !string.IsNullOrWhiteSpace(B1[0]) && !string.IsNullOrWhiteSpace(B2[0]) && !string.IsNullOrWhiteSpace(B3[0]) && !string.IsNullOrWhiteSpace(C1[0]) && !string.IsNullOrWhiteSpace(C2[0]) && !string.IsNullOrWhiteSpace(C3[0]))
             {
                 //GameIsOver = true;
@@ -346,20 +364,23 @@ namespace tictactoe_cli.Models
                 return true;
             }
 
+            // Define the vertical lines of the playing field
             string verticalLine_A = A1[0] + A2[0] + A3[0];
             string verticalLine_B = B1[0] + B2[0] + B3[0];
             string verticalLine_C = C1[0] + C2[0] + C3[0];
-
+            // Define the horizontal lines of the playing field
             string horizontalLine_1 = A1[0] + B1[0] + C1[0];
             string horizontalLine_2 = A2[0] + B2[0] + C2[0];
             string horizontalLine_3 = A3[0] + B3[0] + C3[0];
-
+            // Define the diagonal lines of the playing field
             string crossLineLeft = A1[0] + B2[0] + C3[0];
             string crossLineRight = C1[0] + B2[0] + A3[0];
-
+            // Define the triple lines of both players
             string tripleLine_1 = Player_1.Symbol + Player_1.Symbol + Player_1.Symbol;
             string tripleLine_2 = Player_2.Symbol + Player_2.Symbol + Player_2.Symbol;
 
+            // Check if any line of playing fields could potentially become a triple line (not taking player turns into account)
+            // End the game if no line of playing fields could potentially become a triple line
             if (
                 !verticalLine_A.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !verticalLine_A.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
                 !verticalLine_B.Replace(" ", Player_1.Symbol).Equals(tripleLine_1) && !verticalLine_B.Replace(" ", Player_2.Symbol).Equals(tripleLine_2) &&
@@ -387,19 +408,22 @@ namespace tictactoe_cli.Models
         {
             Console.CursorVisible = false;
 
+            // Define the vertical lines of the playing field
             string verticalLine_A = A1[0] + A2[0] + A3[0];
             string verticalLine_B = B1[0] + B2[0] + B3[0];
             string verticalLine_C = C1[0] + C2[0] + C3[0];
-
+            // Define the horizontal lines of the playing field
             string horizontalLine_1 = A1[0] + B1[0] + C1[0];
             string horizontalLine_2 = A2[0] + B2[0] + C2[0];
             string horizontalLine_3 = A3[0] + B3[0] + C3[0];
-
+            // Define the diagonal lines of the playing field
             string crossLineLeft = A1[0] + B2[0] + C3[0];
             string crossLineRight = C1[0] + B2[0] + A3[0];
-
+            // Define the triple line of the current player
             string tripleLine = player.Symbol + player.Symbol + player.Symbol;
 
+            // Check if any vertical line of playing fields is a triple line of the current player's symbol
+            // End the game if check returns true
             if (verticalLine_A.Equals(tripleLine) || verticalLine_B.Equals(tripleLine) || verticalLine_C.Equals(tripleLine))
             {
                 //GameIsOver = true;
@@ -410,6 +434,8 @@ namespace tictactoe_cli.Models
                 return true;
             }
 
+            // Check if any horizontal line of playing fields is a triple line of the current player's symbol
+            // End the game if check returns true
             if (horizontalLine_1.Equals(tripleLine) || horizontalLine_2.Equals(tripleLine) || horizontalLine_3.Equals(tripleLine))
             {
                 //GameIsOver = true;
@@ -420,6 +446,8 @@ namespace tictactoe_cli.Models
                 return true;
             }
 
+            // Check if any diagonal line of playing fields is a triple line of the current player's symbol
+            // End the game if check returns true
             if (crossLineLeft.Equals(tripleLine) || crossLineRight.Equals(tripleLine))
             {
                 //GameIsOver = true;

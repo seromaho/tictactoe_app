@@ -5,14 +5,20 @@ namespace Extensions
 {
     public static class Console_Extensions
     {
-        public static void halfScreenSizedWindow()
+        public static void FitWindowAndBufferSize()
         {
-            Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight);
+            // Set the console window width to fit the application
+            // Set the console window height to fit the screen
+            Console.SetWindowSize(111, Console.LargestWindowHeight);
+
+            // Set the screen buffer area width to fit the application
+            Console.SetBufferSize(111, Console.BufferHeight);
         }
 
-        public static void Ladebalken()
+        public static void LoadingBar()
         {
             Random RNG = new Random();
+            // Draw a loading bar, then clear the console buffer
 
             Console.CursorVisible = false;
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop + 2);

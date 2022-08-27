@@ -10,8 +10,8 @@ namespace tictactoe_cli.Models
     {
         private static int _playerCounter = 0;
         public string Name { get; set; }
-        public Bitmap Avatar { get; set; }
         public string Symbol { get; set; }
+        public Bitmap Avatar { get; set; }
         public int NumGamesWon { get; set; }
         public int NumGamesLost { get; set; }
 
@@ -24,17 +24,19 @@ namespace tictactoe_cli.Models
             NumGamesWon = 0;
             NumGamesLost = 0;
 
-            Console_Extensions.Ladebalken();
+            Console_Extensions.LoadingBar();
         }
 
         private static string NameFromInput()
         {
             Console.Clear();
+            // Let the current player enter their name
             Console.CursorVisible = true;
             Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
             Console.WriteLine("Enter your name or leave empty to get a random name:");
             string input = Console.ReadLine();
 
+            // Assign a random name if none was entered
             if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
             {
                 input = NameFromList();
@@ -50,6 +52,7 @@ namespace tictactoe_cli.Models
         {
             Console.CursorVisible = false;
 
+            // Get a random name from "tictactoe_app\tictactoe_cli\Data\names.txt" and make its first letter upper case
             // "Could not find a part of the path '${HOME}\\source\\repos\\tictactoe_app\\tictactoe_cli\\bin\\Debug\\netcoreapp3.1\\tictactoe_cli\\Data\\names.txt'."
             string nameListStorage = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt");
             List<string> nameList = new List<string>();
@@ -74,6 +77,9 @@ namespace tictactoe_cli.Models
         {
             string symbol = string.Empty;
 
+            // Assign the "X" symbol to the first player
+            // Assign the "O" symbol to the second player
+            // Keep alternating symbol assignment for future players of this game's instance
             if (_playerCounter % 2 == 0)
             {
                 symbol = "O";
@@ -88,9 +94,13 @@ namespace tictactoe_cli.Models
 
         private static Bitmap AvatarFromList()
         {
+            // Get the symbol images from "tictactoe_app\tictactoe_cli\Data\Images\"
             string symbol_2 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-2-white-25x25.png");
             string symbol_1 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-1-white-25x25.png");
 
+            // Assign the "X" symbol image to the first player
+            // Assign the "O" symbol image to the second player
+            // Keep alternating symbol image assignment for future players of this game's instance
             if (_playerCounter % 2 == 0)
             {
                 return new Bitmap(symbol_2);
@@ -100,55 +110,5 @@ namespace tictactoe_cli.Models
                 return new Bitmap(symbol_1);
             }
         }
-
-        //private static Bitmap AvatarFromInput()
-        //{
-        //    string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
-
-        //    List<Bitmap> bitmapList = new List<Bitmap>();
-        //    foreach (string image in imageStorage)
-        //    {
-        //        bitmapList.Add(new Bitmap(image));
-        //    }
-        //    bitmapList.TrimExcess();
-
-        //    //foreach (Bitmap image in bitmapList)
-        //    //{
-        //    //    image.ToGrayscaleArray();
-        //    //}
-
-        //    Console.WriteLine("Choose an avatar by typing its number:");
-
-        //    foreach (Bitmap image in bitmapList)
-        //    {
-        //        image.ToAsciiWhiteForeground();
-        //    }
-
-        //    return bitmapList.ToArray()[0];
-
-        //    // Console.WriteLine("Enter the number of your avatar or leave empty to get a random avatar:");
-        //}
-
-        //private static Bitmap AvatarFromList()
-        //{
-        //    Console.Clear();
-        //    string[] imageStorage = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images"));
-
-        //    List<Bitmap> bitmapList = new List<Bitmap>();
-        //    foreach (string image in imageStorage)
-        //    {
-        //        bitmapList.Add(new Bitmap(image));
-        //    }
-        //    bitmapList.TrimExcess();
-
-        //    //Console.Clear();
-        //    Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
-        //    Console.Write("Your avatar is:\t\t\t");
-
-        //    bitmapList.ToArray()[0].ToAsciiWhiteForegroundSetup();
-
-        //    Console.ReadLine();
-        //    return bitmapList.ToArray()[0];
-        //}
     }
 }

@@ -97,8 +97,9 @@ namespace Extensions
 
         public static void ToAsciiBlackForeground(this Bitmap image)
         {
-            int left = Console.CursorLeft;
-            int top = Console.CursorTop;
+            int originalLeft = Console.CursorLeft;
+            int originalTop = Console.CursorTop;
+            int initialLeft = 60;
 
             double[,] grayscaleARRAY = new double[image.Width, image.Height];
 
@@ -116,9 +117,9 @@ namespace Extensions
                 }
             }
 
-            Console.SetCursorPosition(60, Console.CursorTop - Console.CursorTop + 3);
+            Console.SetCursorPosition(initialLeft, Console.CursorTop - Console.CursorTop + 3);
             Console.WriteLine("Your symbol is:");
-            Console.SetCursorPosition(60, Console.CursorTop);
+            Console.SetCursorPosition(initialLeft, Console.CursorTop);
 
             string symbol;
 
@@ -158,10 +159,10 @@ namespace Extensions
                 //Console.Write(" {0,2},{1,2}", Console.WindowWidth, Console.WindowHeight);
                 Console.Write("\n");
 
-                Console.SetCursorPosition(60, Console.CursorTop);
+                Console.SetCursorPosition(initialLeft, Console.CursorTop);
             }
 
-            Console.SetCursorPosition(left, top);
+            Console.SetCursorPosition(originalLeft, originalTop);
         }
 
         public static void ToAsciiWhiteForeground(double[,] grayscaleARRAY)
