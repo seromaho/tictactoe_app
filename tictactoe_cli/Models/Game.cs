@@ -197,7 +197,7 @@ namespace tictactoe_cli.Models
             {
                 Console.WriteLine("- - - PLAYER {0} - - -", player.Name);
                 Console.WriteLine("Pick a field to place your symbol by typing the field's coordinate.");
-                Console.WriteLine("(for example, type: A1)");
+                Console.WriteLine("(for example, type: {0})", ReturnRandomField());
                 Console.Write("Field:\t");
                 string fieldName = Console.ReadLine();
 
@@ -346,6 +346,38 @@ namespace tictactoe_cli.Models
                         Console.WriteLine("invalid input - try again\n");
                         break;
                 }
+            }
+        }
+
+        public string ReturnRandomField()
+        {
+            Random RNG = new Random();
+            string[] fields = new string[9] { "A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3" };
+            string field = fields[RNG.Next(fields.Length)];
+
+            switch (field)
+            {
+                case "A1":
+                    if (string.IsNullOrWhiteSpace(A1[0])) { return field; } return ReturnRandomField();
+                case "A2":
+                    if (string.IsNullOrWhiteSpace(A2[0])) { return field; } return ReturnRandomField();
+                case "A3":
+                    if (string.IsNullOrWhiteSpace(A3[0])) { return field; } return ReturnRandomField();
+                case "B1":
+                    if (string.IsNullOrWhiteSpace(B1[0])) { return field; } return ReturnRandomField();
+                case "B2":
+                    if (string.IsNullOrWhiteSpace(B2[0])) { return field; } return ReturnRandomField();
+                case "B3":
+                    if (string.IsNullOrWhiteSpace(B3[0])) { return field; } return ReturnRandomField();
+                case "C1":
+                    if (string.IsNullOrWhiteSpace(C1[0])) { return field; } return ReturnRandomField();
+                case "C2":
+                    if (string.IsNullOrWhiteSpace(C2[0])) { return field; } return ReturnRandomField();
+                case "C3":
+                    if (string.IsNullOrWhiteSpace(C3[0])) { return field; } return ReturnRandomField();
+
+                default:
+                    return ReturnRandomField();
             }
         }
 

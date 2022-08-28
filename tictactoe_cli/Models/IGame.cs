@@ -22,6 +22,7 @@
         public abstract void ResetGameBoard();
         public abstract void SwapPlayerLineUp();
         public abstract void TakeAction(IPlayer player);
+        public abstract string ReturnRandomField();
         public abstract bool CheckIfGameIsDraw();
         public abstract bool CheckIfGameIsWon(IPlayer player);
         public abstract void CheckIfGameIsOver(IPlayer player);
