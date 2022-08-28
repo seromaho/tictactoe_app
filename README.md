@@ -23,7 +23,7 @@ Löse die Aufgabe bitte mit `C#` und wähle dabei einen objektorientierten Ansat
 
    ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191620-907x737.png)
 
-- the field can't already be claimed by the other player
+- the field can't already be claimed by any player
 
    ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191749-907x642.png)
 
