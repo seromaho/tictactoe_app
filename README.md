@@ -7,3 +7,27 @@
 - Das Programm ermöglicht es zwei Spielenden, gegeneinander anzutreten, und achtet dabei auf die Einhaltung dieser Regeln.
 
 Löse die Aufgabe bitte mit `C#` und wähle dabei einen objektorientierten Ansatz.
+
+# Solution Features
+
+- play [`Tic Tac Toe`](https://en.wikipedia.org/wiki/Tic-tac-toe) in a console window
+- create two players at a time
+- name your player or get assigned a random name
+- the playing field is displayed in the console window
+- the current player's symbol is displayed in the console window
+
+   [screenshot](Screenshot-2022-08-27-191111.png)
+   [screenshot](Screenshot-2022-08-27-191217.png)
+
+- type in the coordinates of the field you want to place your symbol in
+
+   [screenshot](Screenshot-2022-08-27-191620.png)
+
+- the field can't already be claimed by the other player
+
+   [screenshot](Screenshot-2022-08-27-191749.png)
+
+- the player to put three of their symbols in a vertical, horizontal or diagonal line wins
+- the game is over when a player wins or when there are no empty fields left
+- have a rematch and keep track of both players' score ..
+- .. or start a new game with new players
