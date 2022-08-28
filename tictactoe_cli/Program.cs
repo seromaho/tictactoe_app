@@ -6,7 +6,7 @@ namespace tictactoe_cli
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             // Save the console window width before modifying it
             // Save the console window height before modifying it
@@ -24,7 +24,7 @@ namespace tictactoe_cli
 
             while (true)
             {
-                // START OF REMATCH LOOP //////////////////////
+                // START OF (REMATCH || NEW GAME) LOOP //////////////////////
 
                 while (true)
                 {
@@ -52,27 +52,35 @@ namespace tictactoe_cli
                 }
 
                 // Ask the players to have a rematch against each other
+                // Ask the players to create a new game w/ new players
                 ticTacToe.DisplayGameStatus();
                 Console.CursorVisible = true;
-                Console.Write("\nTo have a rematch type 'y' or 'yes':\t");
-                string reMatch = Console.ReadLine();
+                Console.Write("\nTo play a rematch, type 're' or 'rematch':");
+                Console.Write("\nTo play a new game (w/ new players), type 'n' or 'new':\n");
+                string gameLoop = Console.ReadLine();
 
-                if (!reMatch.ToLower().Equals("y") && !reMatch.ToLower().Equals("yes"))
+                switch (gameLoop)
                 {
-                    break;
-                }
-                else
-                {
-                    // Clear the playing field for a rematch
-                    ticTacToe.ResetGameBoard();
+                    case "r":
+                    case "re":
+                    case "rematch":
+                        // Clear the playing field for a rematch
+                        ticTacToe.ResetGameBoard();
+                        continue;
+                    case "n":
+                    case "new":
+                        // Create a new game w/ new players
+                        ticTacToe = new Game();
+                        continue;
+                    default:
+                        // Revert the changes made to console window width and console window height
+                        // Revert the changes made to the screen buffer area width
+                        Console_Extensions.RestoreWindowAndBufferSize(originalWindowSize, originalBufferWidth);
+                        return;
                 }
 
-                // END OF REMATCH LOOP //////////////////////
+                // END OF (REMATCH || NEW GAME) LOOP //////////////////////
             }
-
-            // Revert the changes made to console window width and console window height
-            // Revert the changes made to the screen buffer area width
-            Console_Extensions.RestoreWindowAndBufferSize(originalWindowSize, originalBufferWidth);
         }
     }
 }

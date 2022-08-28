@@ -79,7 +79,7 @@ namespace tictactoe_cli.Models
 
             // Assign the "X" symbol to the first player
             // Assign the "O" symbol to the second player
-            // Keep alternating symbol assignment for future players of this game's instance
+            // Keep alternating symbol assignment for future players of this app's instance
             if (_playerCounter % 2 == 0)
             {
                 symbol = "O";
@@ -100,7 +100,7 @@ namespace tictactoe_cli.Models
 
             // Assign the "X" symbol image to the first player
             // Assign the "O" symbol image to the second player
-            // Keep alternating symbol image assignment for future players of this game's instance
+            // Keep alternating symbol image assignment for future players of this app's instance
             if (_playerCounter % 2 == 0)
             {
                 return new Bitmap(symbol_2);

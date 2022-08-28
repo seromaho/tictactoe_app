@@ -1,4 +1,4 @@
-# AUFGABENSTELLUNG
+# Aufgabenstellung
 
 - Es gibt ein Spielfeld mit `3 x 3 Feldern`.
 - Die beiden Spielenden setzen ihre Symbole `Kreuz` und `Kreis` abwechselnd in ein freies Feld.
