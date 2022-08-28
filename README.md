@@ -16,16 +16,16 @@ Löse die Aufgabe bitte mit `C#` und wähle dabei einen objektorientierten Ansat
 - the playing field is displayed in the console window
 - the current player's symbol is displayed in the console window
 
-   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191111.png)
-   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191217.png)
+   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191111-907x545.png)
+   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191217-907x545.png)
 
 - type in the coordinates of the field you want to place your symbol in
 
-   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191620.png)
+   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191620-907x737.png)
 
 - the field can't already be claimed by the other player
 
-   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191749.png)
+   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-27-191749-907x642.png)
 
 - the player to put three of their symbols in a vertical, horizontal or diagonal line wins
 - the game is over when a player wins or when there are no empty fields left
