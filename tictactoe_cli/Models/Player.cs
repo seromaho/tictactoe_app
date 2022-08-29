@@ -13,7 +13,6 @@ namespace tictactoe_cli.Models
         public string Symbol { get; set; }
         public Bitmap Avatar { get; set; }
         public int NumGamesWon { get; set; }
-        public int NumGamesLost { get; set; }
 
         public Player()
         {
@@ -22,7 +21,6 @@ namespace tictactoe_cli.Models
             Symbol = SymbolFromList();
             Avatar = AvatarFromList();
             NumGamesWon = 0;
-            NumGamesLost = 0;
 
             Console_Extensions.LoadingBar();
         }
