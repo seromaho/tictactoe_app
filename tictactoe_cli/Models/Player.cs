@@ -52,9 +52,38 @@ namespace tictactoe_cli.Models
         {
             Console.CursorVisible = false;
 
+            // DEFAULT Current Directory in DEBUG: '${HOME}\Source\Repos\seromaho\tictactoe_app\tictactoe_cli\bin\Debug\netcoreapp3.1'
+            string debugPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt");
+            // DEFAULT Current Directory in RELEASE: '${HOME}\source\repos\seromaho\tictactoe_app\tictactoe_cli\bin\Release\netcoreapp3.1\publish'
+            string releasePath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName).FullName, "Data", "names.txt");
+            // relative path from solution (tictactoe_app)
+            string appPath = Path.Combine("tictactoe_cli", "Data", "names.txt");
+            // relative path from project (tictactoe_cli)
+            string cliPath = Path.Combine("Data", "names.txt");
+
             // Get a random name from "tictactoe_app\tictactoe_cli\Data\names.txt" and make its first letter upper case
-            // "Could not find a part of the path '${HOME}\\source\\repos\\tictactoe_app\\tictactoe_cli\\bin\\Debug\\netcoreapp3.1\\tictactoe_cli\\Data\\names.txt'."
-            string nameListStorage = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt");
+            string nameListStorage = string.Empty;
+
+            if (File.Exists(debugPath))
+            {
+                nameListStorage = debugPath;
+            }
+
+            if (File.Exists(releasePath))
+            {
+                nameListStorage = releasePath;
+            }
+
+            if (File.Exists(appPath))
+            {
+                nameListStorage = appPath;
+            }
+
+            if (File.Exists(cliPath))
+            {
+                nameListStorage = cliPath;
+            }
+
             List<string> nameList = new List<string>();
 
             FileStream fileStream = new FileStream(nameListStorage, FileMode.Open);
