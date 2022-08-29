@@ -52,37 +52,22 @@ namespace tictactoe_cli.Models
         {
             Console.CursorVisible = false;
 
-            // DEFAULT Current Directory in DEBUG: '${HOME}\Source\Repos\seromaho\tictactoe_app\tictactoe_cli\bin\Debug\netcoreapp3.1'
-            string debugPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt");
-            // DEFAULT Current Directory in RELEASE: '${HOME}\source\repos\seromaho\tictactoe_app\tictactoe_cli\bin\Release\netcoreapp3.1\publish'
-            string releasePath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName).FullName, "Data", "names.txt");
             // relative path from solution (tictactoe_app)
             string appPath = Path.Combine("tictactoe_cli", "Data", "names.txt");
             // relative path from project (tictactoe_cli)
             string cliPath = Path.Combine("Data", "names.txt");
+            // DEFAULT Current Directory in DEBUG: '${HOME}\Source\Repos\seromaho\tictactoe_app\tictactoe_cli\bin\Debug\netcoreapp3.1'
+            string debugPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "names.txt");
+            // DEFAULT Current Directory in RELEASE: '${HOME}\source\repos\seromaho\tictactoe_app\tictactoe_cli\bin\Release\netcoreapp3.1\publish'
+            string releasePath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName).FullName, "Data", "names.txt");
 
             // Get a random name from "tictactoe_app\tictactoe_cli\Data\names.txt" and make its first letter upper case
-            string nameListStorage = string.Empty;
-
-            if (File.Exists(debugPath))
-            {
-                nameListStorage = debugPath;
-            }
-
-            if (File.Exists(releasePath))
-            {
-                nameListStorage = releasePath;
-            }
-
-            if (File.Exists(appPath))
-            {
-                nameListStorage = appPath;
-            }
-
-            if (File.Exists(cliPath))
-            {
-                nameListStorage = cliPath;
-            }
+            string nameListStorage;
+            if (File.Exists(appPath)) { nameListStorage = appPath; }
+            else if (File.Exists(cliPath)) { nameListStorage = cliPath; }
+            else if (File.Exists(releasePath)) { nameListStorage = releasePath; }
+            else if (File.Exists(debugPath)) { nameListStorage = debugPath; }
+            else { nameListStorage = string.Empty; }
 
             List<string> nameList = new List<string>();
 
@@ -123,9 +108,39 @@ namespace tictactoe_cli.Models
 
         private static Bitmap AvatarFromList()
         {
+            // relative path from solution (tictactoe_app)
+            string appPath_2 = Path.Combine("tictactoe_cli", "Data", "Images", "tic-tac-toe-symbol-2-white-25x25.png");
+            // relative path from project (tictactoe_cli)
+            string cliPath_2 = Path.Combine("Data", "Images", "tic-tac-toe-symbol-2-white-25x25.png");
+            // DEFAULT Current Directory in DEBUG: '${HOME}\Source\Repos\seromaho\tictactoe_app\tictactoe_cli\bin\Debug\netcoreapp3.1'
+            string debugPath_2 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-2-white-25x25.png");
+            // DEFAULT Current Directory in RELEASE: '${HOME}\source\repos\seromaho\tictactoe_app\tictactoe_cli\bin\Release\netcoreapp3.1\publish'
+            string releasePath_2 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-2-white-25x25.png");
+
             // Get the symbol images from "tictactoe_app\tictactoe_cli\Data\Images\"
-            string symbol_2 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-2-white-25x25.png");
-            string symbol_1 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-1-white-25x25.png");
+            string symbol_2;
+            if (File.Exists(appPath_2)) { symbol_2 = appPath_2; }
+            else if (File.Exists(cliPath_2)) { symbol_2 = cliPath_2; }
+            else if (File.Exists(releasePath_2)) { symbol_2 = releasePath_2; }
+            else if (File.Exists(debugPath_2)) { symbol_2 = debugPath_2; }
+            else { symbol_2 = string.Empty; }
+
+            // relative path from solution (tictactoe_app)
+            string appPath_1 = Path.Combine("tictactoe_cli", "Data", "Images", "tic-tac-toe-symbol-1-white-25x25.png");
+            // relative path from project (tictactoe_cli)
+            string cliPath_1 = Path.Combine("Data", "Images", "tic-tac-toe-symbol-1-white-25x25.png");
+            // DEFAULT Current Directory in DEBUG: '${HOME}\Source\Repos\seromaho\tictactoe_app\tictactoe_cli\bin\Debug\netcoreapp3.1'
+            string debugPath_1 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-1-white-25x25.png");
+            // DEFAULT Current Directory in RELEASE: '${HOME}\source\repos\seromaho\tictactoe_app\tictactoe_cli\bin\Release\netcoreapp3.1\publish'
+            string releasePath_1 = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName).FullName, "Data", "Images", "tic-tac-toe-symbol-1-white-25x25.png");
+
+            // Get the symbol images from "tictactoe_app\tictactoe_cli\Data\Images\"
+            string symbol_1;
+            if (File.Exists(appPath_1)) { symbol_1 = appPath_1; }
+            else if (File.Exists(cliPath_1)) { symbol_1 = cliPath_1; }
+            else if (File.Exists(releasePath_1)) { symbol_1 = releasePath_1; }
+            else if (File.Exists(debugPath_1)) { symbol_1 = debugPath_1; }
+            else { symbol_1 = string.Empty; }
 
             // Assign the "X" symbol image to the first player
             // Assign the "O" symbol image to the second player

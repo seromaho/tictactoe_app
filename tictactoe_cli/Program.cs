@@ -1,6 +1,5 @@
 ﻿using Extensions;
 using System;
-using System.IO;
 using tictactoe_cli.Models;
 
 namespace tictactoe_cli
