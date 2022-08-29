@@ -506,10 +506,5 @@ namespace tictactoe_cli.Models
                 GameIsOver = true;
             }
         }
-
-        public void WriteGameLog()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

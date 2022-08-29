@@ -26,6 +26,5 @@
         public abstract bool CheckIfGameIsDraw();
         public abstract bool CheckIfGameIsWon(IPlayer player);
         public abstract void CheckIfGameIsOver(IPlayer player);
-        public abstract void WriteGameLog();
     }
 }
