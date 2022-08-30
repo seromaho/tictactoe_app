@@ -28,22 +28,35 @@ namespace tictactoe_cli.Models
         private static string NameFromInput()
         {
             Console.Clear();
-            // Let the current player enter their name
-            Console.CursorVisible = true;
-            Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
-            Console.WriteLine("Enter your name or leave empty to get a random name:");
-            string input = Console.ReadLine();
+            string input;
 
-            // Assign a random name if none was entered
-            if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+            while (true)
             {
-                input = NameFromList();
-            }
-            Console.CursorVisible = false;
-            Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop - 1);
-            Console.WriteLine("Your name is: {0}.", input);
+                // Let the current player enter their name
+                Console.CursorVisible = true;
+                Console.WriteLine("- - - PLAYER {0} - - -", _playerCounter);
+                Console.WriteLine("Enter your name or leave empty to get a random name:");
+                input = Console.ReadLine();
 
-            return input;
+                // Check input string's length
+                // Reject input if it has too many characters for the playing field display
+                if (input.Length > 27 && !string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("name is too long - try again\n");
+                    continue;
+                }
+
+                // Assign a random name if none was entered
+                if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+                {
+                    input = NameFromList();
+                }
+                Console.CursorVisible = false;
+                Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop - 1);
+                Console.WriteLine("Your name is: {0}.", input);
+
+                return input;
+            }
         }
 
         private static string NameFromList()

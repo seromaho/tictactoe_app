@@ -155,9 +155,9 @@ namespace tictactoe_cli.Models
             Console.Write("Number of games won:\t");
             int cursorLeft = Console.CursorLeft;
             int cursorTop = Console.CursorTop;
-            Console.WriteLine("{0} - {1}", player_1.Name, player_1.NumGamesWon);
+            Console.WriteLine("{0}  - {1,2}", player_1.Name, player_1.NumGamesWon);
             Console.SetCursorPosition(cursorLeft, cursorTop + 1);
-            Console.WriteLine("{0} - {1}", player_2.Name, player_2.NumGamesWon);
+            Console.WriteLine("{0}  - {1,2}", player_2.Name, player_2.NumGamesWon);
             Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop + 1);
         }
 
