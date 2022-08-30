@@ -13,6 +13,9 @@ Löse die Aufgabe bitte mit `C#` und wähle dabei einen objektorientierten Ansat
 - play [`Tic Tac Toe`](https://en.wikipedia.org/wiki/Tic-tac-toe) in a console window
 - create two players at a time
 - name your player or get assigned a random name
+
+   ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-31-011430-907x232.png)
+
 - the playing field is displayed in the console window
 - the current player's symbol is displayed in the console window
 

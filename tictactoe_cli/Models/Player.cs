@@ -9,6 +9,7 @@ namespace tictactoe_cli.Models
     class Player : IPlayer
     {
         private static int _playerCounter = 0;
+        private static string _playerNameCheck;
         public string Name { get; set; }
         public string Symbol { get; set; }
         public Bitmap Avatar { get; set; }
@@ -38,19 +39,35 @@ namespace tictactoe_cli.Models
                 Console.WriteLine("Enter your name or leave empty to get a random name:");
                 input = Console.ReadLine();
 
-                // Check input string's length
-                // Reject input if it has too many characters for the playing field display
-                if (input.Length > 27 && !string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("name is too long - try again\n");
-                    continue;
-                }
-
                 // Assign a random name if none was entered
                 if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
                 {
                     input = NameFromList();
                 }
+
+                // Check input string's length
+                // Reject input if it has too many chars to fit the playing field display
+                if (input.Length > 27)
+                {
+                    Console.WriteLine("name is too long - try again\n");
+                    continue;
+                }
+
+                // Check if input string equals the first player's name
+                // Reject input if true
+                if (_playerCounter % 2 == 0)
+                {
+                    if (input.Equals(_playerNameCheck))
+                    {
+                        Console.WriteLine("name is already taken - try again\n");
+                        continue;
+                    }
+                }
+                else
+                {
+                    _playerNameCheck = input;
+                }
+
                 Console.CursorVisible = false;
                 Console.SetCursorPosition(Console.CursorLeft - Console.CursorLeft, Console.CursorTop - 1);
                 Console.WriteLine("Your name is: {0}.", input);
