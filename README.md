@@ -36,7 +36,7 @@ Löse die Aufgabe bitte mit `C#` und wähle dabei einen objektorientierten Ansat
    ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-28-183649-907x512.png)
 
 
-- have a rematch and keep track of both players' score ..
+- have a rematch and keep track of both players' scores ..
 - .. or start a new game with new players
 
    <!-- ![screenshot](tictactoe_cli/Data/Images/Screenshot-2022-08-28-183840-907x530.png) -->
