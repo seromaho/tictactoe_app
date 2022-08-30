@@ -10,11 +10,11 @@ namespace Extensions
             // Save the current cursor position
             int originalLeft = Console.CursorLeft;
             int originalTop = Console.CursorTop;
-            // Set the starting column position of the cursor
+            // Set the starting column position of the ASCII artwork
             int initialLeft = 60;
 
             double[,] grayscaleValues = new double[image.Width, image.Height];
-            // Calculate the grayscale value for each pixel of the bitmap
+            // Get the grayscale value for each pixel of the bitmap
             for (int y = 0; y < image.Height; y++)
             {
                 for (int x = 0; x < image.Width; x++)
