@@ -73,6 +73,7 @@ namespace tictactoe_cli
                         ticTacToe = new Game();
                         continue;
                     default:
+                        Console.Clear();
                         // Revert the changes made to console window width and console window height
                         // Revert the changes made to the screen buffer area width
                         Console_Extensions.RestoreWindowAndBufferSize(originalWindowSize, originalBufferWidth);
