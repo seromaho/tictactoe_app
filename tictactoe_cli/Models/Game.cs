@@ -191,7 +191,7 @@ namespace tictactoe_cli.Models
             Console.CursorVisible = true;
 
             // Display an image of current player's symbol
-            player.Avatar.ToAsciiBlackForeground();
+            player.Avatar.ToAsciiArtwork();
 
             while (true)
             {
