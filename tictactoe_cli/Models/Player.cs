@@ -112,7 +112,7 @@ namespace tictactoe_cli.Models
             nameList.TrimExcess();
 
             Random RNG = new Random();
-            return nameList[RNG.Next(nameList.Count)].CapitalizeFirstLetter();
+            return nameList[RNG.Next(nameList.Count)].CapitalizeNames();
         }
 
         private static string SymbolFromList()
